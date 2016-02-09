@@ -7,24 +7,24 @@ from django.db import models
 # fields for the total of all child monthly income, the total of all adult monthly income, and the total 
 # adult monthly income broken out by source. These will be 0 if no income information needed to be provided
 class Application(models.Model):
-    contact_address_one = models.CharField(max_length=200)
-    contact_address_two = models.CharField(max_length=200)
-    contact_city = models.CharField(max_length=50) # as far as I can find no US city has name longer than 24 chars
-    contact_state = models.CharField(max_length=2)
-    contact_zip = models.CharField(max_length=10)
+    contact_address_one = models.CharField(max_length=200, blank=True)
+    contact_address_two = models.CharField(max_length=200, blank=True)
+    contact_city = models.CharField(max_length=50, blank=True) # as far as I can find no US city has name longer than 24 chars
+    contact_state = models.CharField(max_length=2, blank=True)
+    contact_zip = models.CharField(max_length=10, blank=True)
     contact_phone = models.CharField(max_length=10)
-    contact_email = models.EmailField()
+    contact_email = models.EmailField(blank=True)
     contact_name_of_filer = models.CharField(max_length=200)
     date_completed = models.DateTimeField()
     participate_assistance = models.BooleanField()
-    assistance_case_number = models.CharField(max_length=50) # i really hope this is long enough, otherwise ouch
+    assistance_case_number = models.CharField(max_length=50, blank=True) # i really hope this is long enough, otherwise ouch
 
     # NOTE: all income should be converted to monthly before being stored. All income values are monthly income.
-    total_child_income = models.IntegerField()
-    total_adult_income = models.IntegerField()
-    total_adult_income_wages = models.IntegerField()
-    total_adult_income_assistance = models.IntegerField()
-    total_adult_income_other = models.IntegerField()
+    total_child_income = models.IntegerField(blank=True,null=True)
+    total_adult_income = models.IntegerField(blank=True,null=True)
+    total_adult_income_wages = models.IntegerField(blank=True,null=True)
+    total_adult_income_assistance = models.IntegerField(blank=True,null=True)
+    total_adult_income_other = models.IntegerField(blank=True,null=True)
 
     # this is a helper to make it easier to mess with the data in the console
     def __str__(self):
@@ -37,16 +37,16 @@ class Child(models.Model):
 	application = models.ForeignKey(Application)
 	first_name = models.CharField(max_length=200)
 	last_name = models.CharField(max_length=200)
-	middle_initial = models.CharField(max_length=1)
+	middle_initial = models.CharField(max_length=1,blank=True)
 	student = models.BooleanField()
 	foster_child = models.BooleanField()
 	homless = models.BooleanField()
 
 	# NOTE: all income should be converted to monthly before being stored. All income values are monthly income.
-	total_income = models.IntegerField()
-	work_income = models.IntegerField()
-	assitance_income = models.IntegerField()
-	other_income = models.IntegerField() # Is this enough? Or shoudl it be outside_income && other_income?
+	total_income = models.IntegerField(blank=True,null=True)
+	work_income = models.IntegerField(blank=True,null=True)
+	assitance_income = models.IntegerField(blank=True,null=True)
+	other_income = models.IntegerField(blank=True,null=True) # Is this enough? Or shoudl it be outside_income && other_income?
 
 	# this is a helper to make it easier to mess with the data in the console
 	def __str__(self):
@@ -64,10 +64,10 @@ class Adult(models.Model):
 	last_name = models.CharField(max_length=200)
 
 	# NOTE: all income should be converted to monthly before being stored. All income values are monthly income.
-	total_income = models.IntegerField()
-	work_income = models.IntegerField()
-	assitance_income = models.IntegerField()
-	other_income = models.IntegerField()
+	total_income = models.IntegerField(blank=True,null=True)
+	work_income = models.IntegerField(blank=True,null=True)
+	assitance_income = models.IntegerField(blank=True,null=True)
+	other_income = models.IntegerField(blank=True,null=True)
 
 	# this is a helper to make it easier to mess with the data in the console
 	def __str__(self):
