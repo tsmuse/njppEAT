@@ -1,0 +1,30 @@
+@import "normalize";
+@import "compass";
+@import "susy";
+@import "breakpoint";
+@import "compass/layout/sticky-footer";
+
+
+//Mixins
+@mixin selectanimation($animation) {
+    -webkit-transition: $animation;
+    -moz-transition: $animation;
+    -ms-transition: $animation;
+    -o-transition: $animation;
+    transition: $animation;
+  }
+
+//Variables
+
+//colors 
+
+//breakpoints
+
+$susy: (
+	columns: 16,
+	gutters: 1/4,
+	math:fluid,
+	output: float,
+	gutter-position: inside,
+	global-box-sizing: border-box,
+);
