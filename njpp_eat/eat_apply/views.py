@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-	return HttpResponse("test test 1 2 3")
+	return render(request, 'eat_apply/index.html')
