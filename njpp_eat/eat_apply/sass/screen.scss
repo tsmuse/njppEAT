@@ -15,16 +15,35 @@
   }
 
 //Variables
+$typeface: 'Source Sans Pro';
 
 //colors 
+$rich-black:#0C0521;
+$link-color: transparentize($rich-black, 0.6);
 
 //breakpoints
 
 $susy: (
-	columns: 16,
+	columns: 12,
 	gutters: 1/4,
 	math:fluid,
 	output: float,
 	gutter-position: inside,
 	global-box-sizing: border-box,
 );
+
+body{
+	font-family:$typeface, serif;
+	font-size: 16px;
+	color:$rich-black;
+}
+
+
+#school-district-name{
+	@include span(3);
+	color:$rich-black;
+	& a{
+		color:$link-color;
+		text-decoration: none;
+	}
+}

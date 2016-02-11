@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- force mobile safari to use the width of the device as the width of the viewport and disable initial scale -->
+		<meta name="viewport" content="width=device-width; initial-scale=1.0"> 
+		<title>NJPP Prototype Application for Free and Reduced Price School Meals</title>
+		<link href="{% static 'eat_apply/imgs/favicon.png' %}" type="image/png" rel="icon" />
+		<link href="{% static 'eat_apply/css/screen.css' %}" media="screen" rel="stylesheet" type="text/css" />
+		<!-- Google fonts for Source Serif Pro face-->
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<header>
+			<div id="school-district-name"><a href="#" alt="link back to school-district-name website">NJPP Unified School District</a></div>
+			<div id="form-title"><h1>2016-2017 Application for Free and Reduced Price School Meals</h1>
+
+		</header>
+		{% block content %} something went wrong, try reloading and if that doesn't work contact support. {% endblock %}
+	</body>
+</html>
