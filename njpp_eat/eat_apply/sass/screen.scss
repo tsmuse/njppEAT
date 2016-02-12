@@ -16,10 +16,22 @@
 
 //Variables
 $typeface: 'Source Sans Pro';
+$normal-face: 400;
+$light-face: 300;
+$semi-face: 600;
+$bold-face: 700;
 
 //colors 
-$rich-black:#0C0521;
-$link-color: transparentize($rich-black, 0.6);
+$dark-blue:#112e51;
+$flat-blue:#205493;
+$bright-blue:#02bfe7;
+$warm-grey:#494440;
+
+$body-text:$dark-blue;
+$header-bg:lighten($warm-grey,65%);
+$district-contact-bg: lighten($flat-blue,60%);
+
+
 
 //breakpoints
 
@@ -32,18 +44,40 @@ $susy: (
 	global-box-sizing: border-box,
 );
 
+*{
+	box-sizing:border-box;
+}
 body{
 	font-family:$typeface, serif;
 	font-size: 16px;
-	color:$rich-black;
+	color:$body-text;
+
 }
 
+header{
+	@include span(full);
+	height:2rem;
+	background-color:$header-bg;
+	padding-bottom:0.3rem;
+	border-bottom:1px solid rgba($header-bg, 0.1);
+	margin-bottom:2rem;
 
-#school-district-name{
-	@include span(3);
-	color:$rich-black;
-	& a{
-		color:$link-color;
-		text-decoration: none;
+	& h1{
+		font-size:1rem;
+		font-weight: $semi-face; 
+		margin-bottom:0;
 	}
+}
+
+#form-content{
+	@include span(8);
+	padding-left:span(1);
+	padding-right:span(1);
+}
+
+#district-contact-area{
+	@include span(3);
+	margin-left:0;
+	background-color:$district-contact-bg;
+
 }
