@@ -5,7 +5,7 @@ from django.views import generic
 from django.forms import widgets
 from django.forms.models import inlineformset_factory
 from django.utils import timezone
-from formtools.wizard.views import SessionWizzardView
+from formtools.wizard.views import SessionWizardView
 
 from .models import Application, Child, Adult
 from . import forms
@@ -16,8 +16,8 @@ class IndexView(generic.FormView):
 	form_class = forms.ApplicationFormFilerInfo
 
 
-class ApplicationWizard(SessionWizzardView):
-	template_name = "eat_apply/wizard_test.html"
+class ApplicationWizard(SessionWizardView):
+	template_name = "eat_apply/wizard.html"
 	
 	def done(self, form_list, **kwargs):
 		return render_to_response('eat_apply/done.html',{

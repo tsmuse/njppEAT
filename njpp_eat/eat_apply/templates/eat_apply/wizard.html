@@ -1,0 +1,25 @@
+{% extends "eat_apply/base.html" %}
+{% block content %}
+		{% if error_message %}<div class="error">{{error_message}}</div>{% endif %}
+		<div class="filer_info_form">
+			<form action="" method="post">{% csrf_token %}
+		<p>Step {{wizard.steps.step1}} of {{wizard.steps.count}}</p>
+		<table>
+			{{wizard.management_form}}
+			{% if wizard.form.forms %}
+				{{wizard.form.management_form}}
+				{% for form in wizard.form.forms %}
+					{{form}}
+				{% endfor %}
+			{% else %}
+				{{wizard.form}}
+			{% endif %}
+		</table>
+		{% if wizard.steps.prev %}
+			<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">first step</button>
+			<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">prev step</button>
+		{% endif %}
+		<input type="submit" value="submit"/>
+		</form>
+		</div>
+{% endblock %}
