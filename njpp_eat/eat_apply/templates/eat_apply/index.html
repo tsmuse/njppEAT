@@ -1,4 +1,17 @@
 {% extends "eat_apply/base.html" %}
 {% block content %}
-		If you're seeing this, it means the view is working and the routes are working but we haven't actually written the content for this page yet. 
+		<p>
+			This is an application for free and reduced-price school meals. You only need to fill out one application per household, even if your children attend multiple schools in the same district. Applications must be filled out by an adult member (over 18) of the household.
+		</p>
+		<p>
+			Please enter the information for the adult filling out the application below. If a permanent street address is not available, sharing a phone number or email address (both optional) helps us contact you.
+		</p>
+		{% if error_message %}<div class="error">{{error_message}}</div>{% endif %}
+		<div class="filer_info_form">
+			<form action="{% url 'eat_apply:index' %}" method="get">
+				{{form}}
+			</form>
+		</div>
+
+
 {% endblock %}

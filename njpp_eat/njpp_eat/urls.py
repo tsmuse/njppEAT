@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^eat_apply/', include('eat_apply.urls')),
+    url(r'^eat_apply/', include('eat_apply.urls', namespace="eat_apply")),
     url(r'^admin/', admin.site.urls),
 ]
